@@ -14,8 +14,8 @@ export const test = async (oni: any) => {
     const longDelay = async () => await oni.automation.sleep(1000)
 
     const simulateTyping = async (keys: string) => {
-        for(let i = 0; i < keys.length; i++) {
-            oni.automation.sendKeys(keys[i])
+        for (const key of keys) {
+            oni.automation.sendKeys(key)
             await oni.automation.sleep(75 + Math.random() * 25)
         }
     }

@@ -3,7 +3,17 @@ export * from "./Oni"
 import * as assert from "assert"
 import { Oni } from "./Oni"
 
-export const runInProcTest = (oni: Oni, testName: string, testPath: string, timeout: number = 5000) => {
+export const runInProcTest = (testName: string, testPath: string, timeout: number = 5000) => {
+    let oni: Oni
+
+    beforeEach(async () => {
+        oni = new Oni()
+        return oni.start()
+    })
+
+    afterEach(async () => {
+        return oni.close()
+    })
 
     it("test: " + testName, async () => {
         await oni.client.waitForExist(".editor", timeout)

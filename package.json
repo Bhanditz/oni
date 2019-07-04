@@ -36,10 +36,12 @@
       "!test",
       "!node_modules/typescript"
     ],
-    "extraResources": [{
+    "extraResources": [
+      {
         "from": "node_modules/typescript",
         "to": "app/node_modules/typescript"
-    }],
+      }
+    ],
     "mac": {
       "artifactName": "${productName}-${version}-osx.${ext}",
       "category": "public.app-category.developer-tools",
@@ -103,7 +105,9 @@
     "watch:plugins": "cd vim/core/oni-plugin-typescript && tsc --watch",
     "uninstall-global": "npm rm -g oni-vim",
     "install-global": "npm install -g oni-vim",
-    "postinstall": "electron-rebuild"
+    "postinstall": "electron-rebuild",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -120,7 +124,8 @@
     "vscode-jsonrpc": "3.4.1",
     "vscode-languageserver": "3.4.3",
     "vscode-languageserver-types": "3.4.0",
-    "vscode-ripgrep": "0.6.0-patch.0"
+    "vscode-ripgrep": "0.6.0-patch.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@types/classnames": "0.0.32",
@@ -181,5 +186,6 @@
     "wcwidth": "1.0.1",
     "webpack": "3.5.3",
     "webpack-dev-server": "2.7.1"
-  }
+  },
+  "snyk": true
 }
